@@ -1,5 +1,3 @@
-console.log('Hola mundo!');
-
 let peliculas = [];
 
 let tipos = ["movie", 'documental'];
