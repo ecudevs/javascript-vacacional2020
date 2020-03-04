@@ -30,7 +30,9 @@ function renderizarPeliculas(){
                     <div class="card">
                         <img src="${itemPelicula.Poster}" class="card-img-top" alt="..."/>
                         <div class="card-body">
-                        <h5 class="card-title">${itemPelicula.Title}</h5>
+                        <a href="/detalle?imdbID=${itemPelicula.imdbID}">
+                            <h5 class="card-title">${itemPelicula.Title}</h5>
+                        </a>                        
                         <p class="card-text">${itemPelicula.Type} - ${itemPelicula.Year}</p>
                         <button type="button" class="btn btn-primary" onclick="cargarInfoYMostrarFormulario(${index})">Editar</button>
                         <button type="button" class="btn btn-danger" onclick="eliminar(${itemPelicula.imdbID})">Eliminar</button>

@@ -134,6 +134,10 @@ app.delete('/pelicula/:imdbID', function(req, res) {
   res.send({mensaje: 'Pelicula eliminada!'});
 });
 
+app.get("/detalle", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/detalle.html"));
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
