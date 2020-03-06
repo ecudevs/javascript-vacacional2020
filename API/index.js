@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
+const jwt = require('jsonwebtoken');
 
 const app = express();
+
 
 let peliculas = [
   {
@@ -101,6 +103,49 @@ app.put('/saludar', function(req, res){
   res.send('Hola por put! ' + JSON.stringify(req.body));
 });
 
+app.post('/_login', function (req, res){
+  let { usuario, password } = req.body;
+
+  if(usuario === 'thianlopezz' && password === 'password') {
+    console.log('usuario válido');
+    // devolver el token
+    let usuario = { nombre:'Thian Lopez', feNacimiento:'1993-03-16' };
+    let token = jwt.sign(usuario, 'GO_ON', { expiresIn: '24h' });
+
+    res.send({ usuario: {...usuario, token } });
+  } else {
+    res.status(401).send({ mensaje:'Usuario o contraseña incorrectas!' });
+  }
+});
+
+app.get("/detalle", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/detalle.html"));
+});
+
+
+
+app.get("/loginE", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/loginE.html"));
+});
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+// MIDDLEWARE
+app.use(function(req, res, next) {
+  
+  let token = req.headers.token;
+  console.log(token);
+  jwt.verify(token, 'GO_ON', function(error) {
+    if(error){
+      res.status(401).send({mensaje: 'Token incorrecto'});
+    } else {
+      next();
+    }
+  });  
+});
+
 // ACCIONES PARA MODELO PELICULA
 app.get("/peliculas", function (req, res){
   res.send(peliculas);  
@@ -132,14 +177,6 @@ app.delete('/pelicula/:imdbID', function(req, res) {
   });
   peliculas.splice(index, 1);
   res.send({mensaje: 'Pelicula eliminada!'});
-});
-
-app.get("/detalle", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/detalle.html"));
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 const port = process.env.PORT || "9000";

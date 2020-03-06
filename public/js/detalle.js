@@ -2,8 +2,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const imdbID = urlParams.get('imdbID');
 let pelicula = {};
 
+let usuario = JSON.parse(localStorage.getItem('usuario'));
+
 async function obtenerPelicula(){
-    let response = await fetch(`/peliculas/${imdbID}`);
+    let response = await fetch(`/peliculas/${imdbID}`, {
+        headers:{token: usuario.token}
+    });
 
     if(response.ok){
         pelicula = await response.json();

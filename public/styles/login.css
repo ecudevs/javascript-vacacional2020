@@ -1,0 +1,97 @@
+.fondo {
+    z-index: -1 !important;
+    position: fixed !important;
+  }
+  
+  .frente {
+    z-index: 100 !important;
+    position: relative !important;
+  }
+  
+  .contenedor-centrador {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* label color */
+  .input-field label {
+    color: rgb(82, 82, 82) !important;
+    font-size: 19px !important;
+  }
+  /* label focus color */
+  .input-field input[type="text"]:focus + label,
+  .input-field input[type="password"]:focus + label {
+    color: rgb(25, 47, 114) !important;
+  }
+  /* label underline focus color */
+  .input-field input[type="text"]:focus,
+  .input-field input[type="password"]:focus {
+    border-bottom: 1px solid rgb(25, 47, 114) !important;
+    box-shadow: 0 1px 0 0 rgb(25, 47, 114) !important;
+  }
+  
+  /* valid color */
+  .input-field input[type="text"].valid,
+  .input-field input[type="password"].valid {
+    border-bottom: 1px solid rgb(25, 47, 114) !important;
+    box-shadow: 0 1px 0 0 rgb(25, 47, 114) !important;
+  }
+  /* invalid color */
+  .input-field input[type="text"].invalid,
+  .input-field input[type="password"].invalid {
+    border-bottom: 1px solid rgb(245, 0, 0) !important;
+    box-shadow: 0 1px 0 0 rgb(255, 0, 0) !important;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #000 !important;
+  }
+  
+  .btn {
+    background-color: rgb(56, 62, 80) !important;
+    width: 300px;
+    height: 45px!important;
+    line-height: 45px !important;
+    font-size: 18px !important;
+  }
+  
+  .login{
+    padding: 10px;
+  }
+  
+  
+  .cont_input {
+    padding: 10px;
+  }
+  
+  .redes_logo {
+    padding: 10px;
+  }
+  
+  .material-icons {
+    color: #080808 !important;
+  }
+  .material-icons:active {
+    color: #ffffff !important;
+  }
+  
+  .rectangulo_externo {
+    backdrop-filter: blur(15px);
+    box-shadow: 0 12px 17px rgba(0, 0, 0, 0.95);
+    border-radius: 7px;
+  
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 570px;
+    height: 675px;
+    z-index: 100 !important;
+  }
+  
+  h5{
+    font-size: 32px !important;
+  }
+  
+  body{
+    font-family: 'Open Sans', sans-serif;
+  }
